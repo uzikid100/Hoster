@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:showIn="@layout/content_create_event"
+    tools:context=".createEvent"
+    android:contextClickable="true"
+    android:onClick="onClickEventIcon">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/set_visibility"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/enter_visibility"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_eye" />
+
+        <TextView
+            android:id="@+id/enter_visibility"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/set_visibility"
+            android:padding="8dp"
+            android:text="change Visibilty"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"/>
+
+        <RadioButton
+            android:id="@+id/visibility_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/enter_visibility"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:shadowColor="@color/lightCyan"
+            android:layout_toRightOf="@+id/enter_visibility" />
+
+
+
+
+
+
+
+
+        <ImageView
+            android:id="@+id/set_date"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/enter_date"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_event_calender" />
+
+        <TextView
+            android:id="@+id/enter_date"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/set_date"
+            android:padding="8dp"
+            android:text="set Date and time"
+            android:textAllCaps="true"
+            android:layout_below="@id/enter_visibility"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"/>
+
+        <RadioButton
+            android:id="@+id/date_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/enter_date"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:shadowColor="@color/lightCyan"
+            android:layout_toRightOf="@+id/enter_date" />
+
+
+
+
+
+
+        <ImageView
+            android:id="@+id/set_price"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/enter_price"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_moneys" />
+
+        <TextView
+            android:id="@+id/enter_price"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/set_price"
+            android:padding="8dp"
+            android:text="ENTER PRICE"
+            android:textAllCaps="true"
+            android:layout_below="@id/enter_date"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"/>
+
+        <RadioButton
+            android:id="@+id/price_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/enter_price"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:shadowColor="@color/lightCyan"
+            android:layout_toRightOf="@+id/enter_price" />
+
+
+
+
+
+        <ImageView
+            android:id="@+id/set_location"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/enter_location"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_add_event_location" />
+
+        <TextView
+            android:id="@+id/enter_location"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/set_location"
+            android:padding="8dp"
+            android:text="set a LOCATION"
+            android:textAllCaps="true"
+            android:layout_below="@id/enter_price"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"/>
+
+        <RadioButton
+            android:id="@+id/location_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/enter_location"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:shadowColor="@color/lightCyan"
+            android:layout_toRightOf="@+id/enter_location" />
+
+
+
+
+
+
+
+        <ImageView
+            android:id="@+id/set_capacity"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/enter_capacity"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            android:layout_below="@id/enter_location"
+            android:src="@mipmap/ic_capacity" />
+
+        <TextView
+            android:id="@+id/enter_capacity"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/set_capacity"
+            android:padding="8dp"
+            android:text="ENTER capacity"
+            android:textAllCaps="true"
+            android:layout_below="@id/enter_location"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"/>
+
+        <RadioButton
+            android:id="@+id/capacity_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/enter_capacity"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:shadowColor="@color/lightCyan"
+            android:layout_toRightOf="@+id/enter_location" />
+
+
+
+
+
+        <ImageView
+            android:id="@+id/set_event_type"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/enter_event_type"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_event_type" />
+
+        <TextView
+            android:id="@+id/enter_event_type"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/set_event_type"
+            android:padding="8dp"
+            android:text="ENTER Event Type"
+            android:textAllCaps="true"
+            android:layout_below="@id/enter_capacity"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"/>
+
+        <RadioButton
+            android:id="@+id/event_type_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/enter_event_type"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:shadowColor="@color/lightCyan"
+            android:layout_toRightOf="@+id/enter_location" />
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
