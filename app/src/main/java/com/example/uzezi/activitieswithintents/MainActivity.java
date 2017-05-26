@@ -1,9 +1,9 @@
 package com.example.uzezi.activitieswithintents;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ShareCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,9 +16,14 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.uzezi.activitieswithintents.fragment_package.GmapFragment;
+import com.example.uzezi.activitieswithintents.fragment_package.MainFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    private FloatingActionButton mFab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +32,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         final Toast toast = Toast.makeText(this, "Finding Live Streams near You!", Toast.LENGTH_SHORT);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toast.show();
@@ -43,6 +48,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, new GmapFragment())
+                .commit();
+
     }
 
     @Override
@@ -78,7 +89,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    private Button mCancelCreateEventButton;
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -86,7 +96,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.create_event) {
-            mCancelCreateEventButton = (Button) findViewById(R.id.cancel_createEvent_button);
             final Intent intent = new Intent(this, createEvent.class);
             startActivity(intent);
 

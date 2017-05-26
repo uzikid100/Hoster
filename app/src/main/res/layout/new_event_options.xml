@@ -222,7 +222,7 @@
             android:layout_below="@id/enter_capacity"
             android:textColor="@android:color/black"
             android:textSize="16sp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="24dp"/>
 
         <RadioButton
             android:id="@+id/event_type_complete"
@@ -232,11 +232,24 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:shadowColor="@color/lightCyan"
-            android:layout_toRightOf="@+id/enter_location" />
-
-
+            android:layout_toRightOf="@+id/enter_location"/>
 
     </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/create_event_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/event_type_complete"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="create"
+        android:textSize="18dp"
+        android:elevation="40dp"
+        android:textColor="@android:color/white"
+        android:background="@color/red"/>
 
 
 </LinearLayout>

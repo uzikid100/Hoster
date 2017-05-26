@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.uzezi.activitieswithintents.R;
 import com.google.android.gms.ads.AdView;
@@ -36,6 +37,8 @@ public class createEvent extends AppCompatActivity {
     private TextView mEventTitleTextView;
     private TextView mEventHost;
     private EditText mSetEventName;
+    private ImageView mImageFromPhotoIcon;
+    private Button mCreateEventButton;
 
 
     @Override
@@ -46,6 +49,8 @@ public class createEvent extends AppCompatActivity {
         mEventTitleTextView = (TextView) findViewById(R.id.tv_eventName);
         mEventHost = (TextView) findViewById(R.id.event_host);
         mSetEventName = (EditText) findViewById(R.id.et_set_event_name);
+        mImageFromPhotoIcon = (ImageView) findViewById(R.id.image_from_photo_icon);
+        mCreateEventButton = (Button) findViewById(R.id.create_event_button);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -109,6 +114,14 @@ public class createEvent extends AppCompatActivity {
                 return false;
             }
         });
+
+        final Toast createEventToast = Toast.makeText(this, "Your Event has been created and added to maps!", Toast.LENGTH_LONG);
+        mCreateEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createEventToast.show();
+            }
+        });
     }
 
 
@@ -127,7 +140,7 @@ public class createEvent extends AppCompatActivity {
         switch (requestCode){
             case 1: if(requestCode == RESULT_OK){
                 Uri intentDataReturned = data.getData();
-                mEventImage.setImageURI(intentDataReturned);
+                mImageFromPhotoIcon.setImageURI(intentDataReturned);
                 break;
             }
         }
@@ -141,16 +154,16 @@ public class createEvent extends AppCompatActivity {
     }
 
 
-    private AdView mAdView;
-
-    public void onClickEventIcon(View view) {
-
-        mAdView = (AdView) (R.layout.activity_visibility_ad);
-
-
-
-        LayoutInflater ad = LayoutInflater.from(this);
-
-        ad.inflate(R.layout.activity_visibility_ad, view, false);
-    }
+//    private AdView mAdView;
+//
+//    public void onClickEventIcon(View view) {
+//
+//        mAdView = (AdView) (R.layout.activity_visibility_ad);
+//
+//
+//
+//        LayoutInflater ad = LayoutInflater.from(this);
+//
+//        ad.inflate(R.layout.activity_visibility_ad, view, false);
+//    }
 }

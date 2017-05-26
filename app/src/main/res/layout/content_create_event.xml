@@ -21,7 +21,7 @@
         android:background="@color/hostrYellow"
         android:elevation="16dp">
 
-        <include layout="@layout/ads"/>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -126,6 +126,13 @@
 
     </FrameLayout>
 
-    <include layout="@layout/new_event_options"/>
+    <ImageView
+        android:id="@+id/image_from_photo_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+
+    <include layout="@layout/new_event_options" />
 
 </LinearLayout>
