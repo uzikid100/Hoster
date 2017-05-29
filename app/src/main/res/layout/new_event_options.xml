@@ -237,19 +237,19 @@
     </RelativeLayout>
 
 
-    <Button
-        android:id="@+id/create_event_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/event_type_complete"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="create"
-        android:textSize="18dp"
-        android:elevation="40dp"
-        android:textColor="@android:color/white"
-        android:background="@color/red"/>
+    <!--<Button-->
+        <!--android:id="@+id/create_event_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_below="@id/event_type_complete"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:text="create"-->
+        <!--android:textSize="18dp"-->
+        <!--android:elevation="40dp"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:background="@color/red"/>-->
 
 
 </LinearLayout>

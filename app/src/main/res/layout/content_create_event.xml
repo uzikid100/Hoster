@@ -19,6 +19,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="@color/hostrYellow"
+        android:layout_marginBottom="8dp"
         android:elevation="16dp">
 
 
@@ -127,12 +128,14 @@
     </FrameLayout>
 
     <ImageView
-        android:id="@+id/image_from_photo_icon"
+        android:id="@+id/image_from_photo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
 
-    <include layout="@layout/new_event_options" />
+    <include layout="@layout/event_features_listview"/>
+
+    <!--<include layout="@layout/new_event_options" />-->
 
 </LinearLayout>

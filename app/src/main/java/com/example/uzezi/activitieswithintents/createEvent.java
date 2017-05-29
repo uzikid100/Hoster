@@ -1,33 +1,20 @@
 package com.example.uzezi.activitieswithintents;
 
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.Layout;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.uzezi.activitieswithintents.R;
-import com.google.android.gms.ads.AdView;
 
 public class createEvent extends AppCompatActivity {
 
@@ -38,19 +25,25 @@ public class createEvent extends AppCompatActivity {
     private TextView mEventHost;
     private EditText mSetEventName;
     private ImageView mImageFromPhotoIcon;
-    private Button mCreateEventButton;
+//    private Button mCreateEventButton;
 
+
+    private ListView mEventFeaturesListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
+
+        mEventFeaturesListView = (ListView) findViewById(R.id.new_event_listView);
+        mEventFeaturesListView.setAdapter(new EventFeaturesAdapter(this));
+
         mEventTitleTextView = (TextView) findViewById(R.id.tv_eventName);
         mEventHost = (TextView) findViewById(R.id.event_host);
         mSetEventName = (EditText) findViewById(R.id.et_set_event_name);
-        mImageFromPhotoIcon = (ImageView) findViewById(R.id.image_from_photo_icon);
-        mCreateEventButton = (Button) findViewById(R.id.create_event_button);
+        mImageFromPhotoIcon = (ImageView) findViewById(R.id.image_from_photo);
+//        mCreateEventButton = (Button) findViewById(R.id.create_event_button);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -115,15 +108,14 @@ public class createEvent extends AppCompatActivity {
             }
         });
 
-        final Toast createEventToast = Toast.makeText(this, "Your Event has been created and added to maps!", Toast.LENGTH_LONG);
-        mCreateEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createEventToast.show();
-            }
-        });
+//        final Toast createEventToast = Toast.makeText(this, "Your Event has been created and added to maps!", Toast.LENGTH_LONG);
+//        mCreateEventButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                createEventToast.show();
+//            }
+//        });
     }
-
 
 
     public void shareApp (String linkToDownloadApp){
@@ -146,24 +138,11 @@ public class createEvent extends AppCompatActivity {
         }
     }
 
-
-    public void onClickEventName(View view) {
-        mEventTitleTextView.setVisibility(View.INVISIBLE);
-        mSetEventName.setVisibility(View.VISIBLE);
-
-    }
-
-
-//    private AdView mAdView;
 //
-//    public void onClickEventIcon(View view) {
+//    public void onClickEventName(View view) {
+//        mEventTitleTextView.setVisibility(View.INVISIBLE);
+//        mSetEventName.setVisibility(View.VISIBLE);
 //
-//        mAdView = (AdView) (R.layout.activity_visibility_ad);
-//
-//
-//
-//        LayoutInflater ad = LayoutInflater.from(this);
-//
-//        ad.inflate(R.layout.activity_visibility_ad, view, false);
 //    }
+
 }
