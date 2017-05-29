@@ -17,6 +17,13 @@
     <!- -->
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="event_features">
+        <item>change visibility</item>
+        <item>enter date and time</item>
+        <item>enter price</item>
+        <item>enter capacity</item>
+        <item>change location</item>
+        <item>set event type</item>
+    </string-array>
+
 </resources>
