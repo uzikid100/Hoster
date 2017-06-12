@@ -13,15 +13,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.uzezi.activitieswithintents.fragment_package.GmapFragment;
-import com.example.uzezi.activitieswithintents.fragment_package.MainFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    /*
+    TODO
+    Add recyclerView with eventOptions to the contentCreate View
+    Add current location feature with marker and camera
+    Simulate creating an event with mandatory fields
+    Throw an error/handle mandatory eventFields not set... i.e. (location not set)
+    Finish Preferences with udacity.
+     */
 
     private FloatingActionButton mFab;
     @Override
@@ -31,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final Toast toast = Toast.makeText(this, "Finding Live Streams near You!", Toast.LENGTH_SHORT);
+        final Toast toast = Toast.makeText(this, "Finding Events Near You!", Toast.LENGTH_SHORT);
         mFab = (FloatingActionButton) findViewById(R.id.fab);
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override

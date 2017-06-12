@@ -10,6 +10,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Layout;
@@ -26,8 +28,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.uzezi.activitieswithintents.NewEvent_Package.EventFeaturesData;
 import com.example.uzezi.activitieswithintents.R;
 import com.google.android.gms.ads.AdView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class createEvent extends AppCompatActivity {
 
@@ -40,6 +46,9 @@ public class createEvent extends AppCompatActivity {
     private ImageView mImageFromPhotoIcon;
     private Button mCreateEventButton;
 
+    private EventOptionsAdapter mAdapter;
+    private RecyclerView mRecyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +58,15 @@ public class createEvent extends AppCompatActivity {
         mEventTitleTextView = (TextView) findViewById(R.id.tv_eventName);
         mEventHost = (TextView) findViewById(R.id.event_host);
         mSetEventName = (EditText) findViewById(R.id.et_set_event_name);
-        mImageFromPhotoIcon = (ImageView) findViewById(R.id.image_from_photo_icon);
-        mCreateEventButton = (Button) findViewById(R.id.create_event_button);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_event_options);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mAdapter = new EventOptionsAdapter(GetData());
+        mRecyclerView.setAdapter(mAdapter);
+
+
+//        mImageFromPhotoIcon = (ImageView) findViewById(R.id.image_from_photo_icon);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -114,17 +130,24 @@ public class createEvent extends AppCompatActivity {
                 return false;
             }
         });
-
-        final Toast createEventToast = Toast.makeText(this, "Your Event has been created and added to maps!", Toast.LENGTH_LONG);
-        mCreateEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createEventToast.show();
-            }
-        });
     }
 
+    public static List<EventFeaturesData> GetData(){
+        List<EventFeaturesData> data = new ArrayList<>();
 
+        String[] optDescription = {"SELECT VISIBILITY", "ENTER DATE AND TIME", "ENTER PRICE",
+                                    "ENTER CAPACITY", "SET LOCATION", "CHOOSE EVENT TYPE"};
+        int[] optIcons = {R.drawable.mask_flat_icon, R.drawable.calendar_icon_three, R.drawable.dollar,
+                            R.drawable.followers_icon, R.drawable.find_event_icon, R.drawable.event_icon};
+
+        for (int i = 0; i < optDescription.length && i < optIcons.length; i++) {
+            EventFeaturesData current = new EventFeaturesData();
+            current.icon = optIcons[i];
+            current.optionTitle = optDescription[i];
+            data.add(current);
+        }
+        return data;
+    }
 
     public void shareApp (String linkToDownloadApp){
         ShareCompat.IntentBuilder.from(this)
@@ -134,17 +157,17 @@ public class createEvent extends AppCompatActivity {
                 .startChooser();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
-            case 1: if(requestCode == RESULT_OK){
-                Uri intentDataReturned = data.getData();
-                mImageFromPhotoIcon.setImageURI(intentDataReturned);
-                break;
-            }
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch (requestCode){
+//            case 1: if(requestCode == RESULT_OK){
+//                Uri intentDataReturned = data.getData();
+//                mImageFromPhotoIcon.setImageURI(intentDataReturned);
+//                break;
+//            }
+//        }
+//    }
 
 
     public void onClickEventName(View view) {
@@ -152,18 +175,4 @@ public class createEvent extends AppCompatActivity {
         mSetEventName.setVisibility(View.VISIBLE);
 
     }
-
-
-//    private AdView mAdView;
-//
-//    public void onClickEventIcon(View view) {
-//
-//        mAdView = (AdView) (R.layout.activity_visibility_ad);
-//
-//
-//
-//        LayoutInflater ad = LayoutInflater.from(this);
-//
-//        ad.inflate(R.layout.activity_visibility_ad, view, false);
-//    }
 }

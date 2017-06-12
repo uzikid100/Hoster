@@ -8,6 +8,8 @@
     <color name="lightGray">#E0E0E0</color>
     <color name="lightCyan">#80DEEA</color>
     <color name="midDeepOrange">#FF7043</color>
-    <color name="red">#F44336</color>
-    <color name="deepRed">#C62828</color>
+    <color name="red">#f44336</color>
+    <color name="deepRed">#c62828</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -22,10 +22,10 @@
         app:backgroundTint="@color/lightCyan"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <include layout="@layout/content_create_event" />
-    </ScrollView>
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

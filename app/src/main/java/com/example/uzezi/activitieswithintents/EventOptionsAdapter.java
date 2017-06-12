@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.uzezi.activitieswithintents.NewEvent_Package.EventFeaturesData;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class EventOptionsAdapter extends RecyclerView.Adapter<EventOptionsAdapte
 
     private int mNumberOfItems;
     private OnListItemClickedListener listItemClickedListener;
-    private List<DataForAdapter> eventOption = Collections.EMPTY_LIST;
+    List<EventFeaturesData> eventOption = Collections.EMPTY_LIST;
 
     public interface OnListItemClickedListener{
         void OnListItemClicked(int position);
@@ -44,7 +46,8 @@ public class EventOptionsAdapter extends RecyclerView.Adapter<EventOptionsAdapte
 
     @Override
     public void onBindViewHolder(FeatureViewHolder holder, int position) {
-        DataForAdapter current = eventOption.get(position);
+
+        EventFeaturesData current = eventOption.get(position);
         holder.description.setText(current.optionTitle);
         holder.icon.setImageResource(current.icon);
     }
@@ -68,15 +71,15 @@ public class EventOptionsAdapter extends RecyclerView.Adapter<EventOptionsAdapte
 
             description = (TextView) itemView.findViewById(R.id.tv_custom_row_description);
             icon = (ImageView) itemView.findViewById(R.id.iv_custom_row_image);
-        }
+    }
 
         @Override
         public void onClick(View v) {
         }
     }
-
-    class DataForAdapter{
-        int icon;
-        String optionTitle;
-    }
+//
+//    class EventFeaturesData {
+//        int icon;
+//        String optionTitle;
+//    }
 }
