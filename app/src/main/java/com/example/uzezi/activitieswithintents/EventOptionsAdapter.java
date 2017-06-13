@@ -19,8 +19,7 @@ import java.util.List;
 
 public class EventOptionsAdapter extends RecyclerView.Adapter<EventOptionsAdapter.FeatureViewHolder> {
 
-    private int mNumberOfItems;
-    private OnListItemClickedListener listItemClickedListener;
+    final private OnListItemClickedListener listItemClickedListener;
     List<EventFeaturesData> eventOption = Collections.EMPTY_LIST;
 
     public interface OnListItemClickedListener{
@@ -28,8 +27,16 @@ public class EventOptionsAdapter extends RecyclerView.Adapter<EventOptionsAdapte
     }
 
 
-    public EventOptionsAdapter(List data){
+    public EventOptionsAdapter(List data, OnListItemClickedListener listener, String adapterType){
+        switch (adapterType){
+            case "main":
+
+                break;
+            case "option":
+                break;
+        }
         eventOption = data;
+        listItemClickedListener = listener;
     }
 
     @Override
@@ -69,17 +76,15 @@ public class EventOptionsAdapter extends RecyclerView.Adapter<EventOptionsAdapte
         public FeatureViewHolder(View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(this);
             description = (TextView) itemView.findViewById(R.id.tv_custom_row_description);
             icon = (ImageView) itemView.findViewById(R.id.iv_custom_row_image);
     }
 
         @Override
         public void onClick(View v) {
+            int clickedPosition = getAdapterPosition();
+            listItemClickedListener.OnListItemClicked(clickedPosition);
         }
     }
-//
-//    class EventFeaturesData {
-//        int icon;
-//        String optionTitle;
-//    }
 }

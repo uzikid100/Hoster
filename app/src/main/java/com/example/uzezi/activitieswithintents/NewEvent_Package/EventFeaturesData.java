@@ -8,3 +8,4 @@ public class EventFeaturesData {
     public String optionTitle;
     public int icon;
 }
+
