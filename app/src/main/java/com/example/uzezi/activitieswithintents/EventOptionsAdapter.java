@@ -27,14 +27,7 @@ public class EventOptionsAdapter extends RecyclerView.Adapter<EventOptionsAdapte
     }
 
 
-    public EventOptionsAdapter(List data, OnListItemClickedListener listener, String adapterType){
-        switch (adapterType){
-            case "main":
-
-                break;
-            case "option":
-                break;
-        }
+    public EventOptionsAdapter(List data, OnListItemClickedListener listener){
         eventOption = data;
         listItemClickedListener = listener;
     }
@@ -63,9 +56,6 @@ public class EventOptionsAdapter extends RecyclerView.Adapter<EventOptionsAdapte
     public int getItemCount() {
         return eventOption != null ? eventOption.size() : null;
     }
-
-
-
 
 
     public class FeatureViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
