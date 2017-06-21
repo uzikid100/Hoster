@@ -9,21 +9,22 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.uzezi.activitieswithintents.NewEvent_Package.EventFeaturesData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class createEvent extends AppCompatActivity implements EventOptionsAdapter.OnListItemClickedListener {
+public class createEvent extends AppCompatActivity implements EventOptionsAdapter.OnListItemClickedListener{
 
     private ImageView mImageIcon;
     private Button mCancelEventButton;
@@ -32,13 +33,13 @@ public class createEvent extends AppCompatActivity implements EventOptionsAdapte
     private EventOptionsAdapter mAdapter;
     private RecyclerView mRecyclerView;
 
-    private Toast mToast;
     private View mDialogView;
     private AlertDialog.Builder mLogBuilder;
     private TextView mOKButton, mCancelLogButton;
     private AlertDialog mDlog;
-    private TextView mVisTV1, mVisTV2, mVisTV3;
+    private TextView mVisTV1;
     private View mDLogLayout;
+    private RelativeLayout relativeLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class createEvent extends AppCompatActivity implements EventOptionsAdapte
         mSetEventName = (EditText) findViewById(R.id.et_set_event_name);
         mImageIcon = (ImageView) findViewById(R.id.iv_insert_eventImage_icon);
 
+
         //Setting Adapter for RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_event_options);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -59,16 +61,15 @@ public class createEvent extends AppCompatActivity implements EventOptionsAdapte
 
 
         //Init Dialog
-        mDialogView = getLayoutInflater().inflate(R.layout.visibility_dialog, null);
+        mDialogView = getLayoutInflater().inflate(R.layout.generic_option_dialog, null);
         mLogBuilder = new AlertDialog.Builder(this);
         mLogBuilder.setView(mDialogView);
         mDlog = mLogBuilder.create();
         mCancelLogButton = (TextView) mDialogView.findViewById(R.id.cancel_action_button);
         mOKButton = (TextView) findViewById(R.id.ok_action_button);
         mVisTV1 = (TextView) mDialogView.findViewById(R.id.visibility_dialog_title);
-        mVisTV2 = (TextView) mDialogView.findViewById(R.id.ok_action_button);
-        mVisTV3 = (TextView) mDialogView.findViewById(R.id.cancel_action_button);
-        mDLogLayout = (View) mDialogView.findViewById(R.id.options_dialog);
+        mDLogLayout = mDialogView.findViewById(R.id.options_dlog_header);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -129,18 +130,10 @@ public class createEvent extends AppCompatActivity implements EventOptionsAdapte
         mCancelLogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDlog.dismiss();
+                mDlog.cancel();
+                
             }
         });
-
-//        final String message = "please work..";
-//        mToast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
-//        mOKButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mToast.sh
-//            }
-//        });
     }
 
     public static List<EventFeaturesData> GetData(){
@@ -180,13 +173,10 @@ public class createEvent extends AppCompatActivity implements EventOptionsAdapte
 //        }
 //    }
 
-
-
     public void onClickEventName(View view) {
         mEventTitleTextView.setVisibility(View.INVISIBLE);
         mSetEventName.setVisibility(View.VISIBLE);
     }
-
 
 
     @Override
@@ -208,6 +198,7 @@ public class createEvent extends AppCompatActivity implements EventOptionsAdapte
                 break;
             case 2:
                 mVisTV1.setText("price");
+//                appendView();
                 mDLogLayout.setBackgroundResource(R.color.green);
                 break;
             case 3:
@@ -224,4 +215,45 @@ public class createEvent extends AppCompatActivity implements EventOptionsAdapte
                 break;
         }
     }
+
+//    private void appendView() {
+//        View view = View.inflate(getApplicationContext(), R.layout.price_and_cap_dlog, null);
+////        mDlog.addContentView(view, new LinearLayout.LayoutParams(
+////                LinearLayout.LayoutParams.MATCH_PARENT,
+////                LinearLayout.LayoutParams.MATCH_PARENT
+////        ));
+//        mDlog.show();
+//    }
+
+    private SeekBar mSeekBar;
+    private TextView mEntryAmount;
+    private ImageView imageView;
+
+    private void DLogSeekBar(){
+        mSeekBar = (SeekBar) mDialogView.findViewById(R.id.dialog_seekBar);
+        imageView = (ImageView) mDialogView.findViewById(R.id.tv_seekBar_icon);
+        mEntryAmount = (TextView) mDialogView.findViewById(R.id.entry_amount);
+
+
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            String text = null;
+            int progress_value;
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progress_value = progress;
+                text = (progress == 0) ? "Free" : String.valueOf(progress) + "$";
+                mEntryAmount.setText(text);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+    }
+
+
 }

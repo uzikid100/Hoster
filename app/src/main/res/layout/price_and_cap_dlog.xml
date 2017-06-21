@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/relative_seekBar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/tv_seekBar_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingRight="8dp"
+            android:text="0"
+            android:src="@drawable/dollar"
+            android:scaleType="centerCrop"/>
+
+        <SeekBar
+            android:id="@+id/dialog_seekBar"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_seekBar_icon"
+            android:layout_alignBottom="@id/tv_seekBar_icon"
+            android:saveEnabled="true"
+            android:max="100"
+            android:focusable="true"
+            android:layout_alignParentTop="true"/>
+
+
+        <TextView
+            android:id="@+id/entry_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:textColor="@color/green"
+            android:text="FREE"
+            android:layout_below="@id/dialog_seekBar"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
